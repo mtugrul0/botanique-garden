@@ -1,0 +1,29 @@
+# ===== Botanique Garden - .gitignore =====
+
+# Gerçek veritabanı yapılandırması (şifre/kimlik bilgileri)
+config/db.php
+
+# İşletim sistemi dosyaları
+Thumbs.db
+Desktop.ini
+.DS_Store
+.DS_Store?
+._*
+
+# IDE / Editör dosyaları
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Log dosyaları
+*.log
+error_log
+
+# Geçici dosyalar
+*.tmp
+*.bak
+*.cache
