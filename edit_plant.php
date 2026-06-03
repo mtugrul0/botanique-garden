@@ -1,4 +1,5 @@
 <?php
+// Bilgi güncelleme (Update) işlemleri için session başlatılıyor
 session_start();
 ob_start();
 
@@ -20,6 +21,7 @@ if ($plant_id <= 0) {
     exit;
 }
 
+// Güncellenecek bitkinin mevcut bilgilerini veritabanından çek (Read işlemi)
 $plant = $db->fetchOne(
     'SELECT * FROM plants WHERE id = ?',
     [$plant_id]
@@ -44,6 +46,7 @@ $form_data = [
     'last_watered'    => $plant['last_watered'],
 ];
 
+// Bilgi güncelleme (Update) formu gönderildiğinde çalışacak kontroller
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $name            = trim($_POST['name'] ?? '');
@@ -87,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
 
+        // Veritabanındaki bitki bilgilerini güncelle (Bilgi güncelleme - Update işlemi)
         $db->execute(
             'UPDATE plants SET name = ?, species = ?, location = ?, water_frequency = ?, last_watered = ? WHERE id = ? AND added_by = ?',
             [$name, $species, $location, intval($water_frequency), $last_watered, $plant_id, $_SESSION['user_id']]

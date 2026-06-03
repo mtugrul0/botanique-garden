@@ -1,8 +1,10 @@
 <?php
+// Oturum kapatma işlemleri başlatılıyor
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Tüm session (oturum) değişkenlerini temizle (Oturum kapama)
 $_SESSION = [];
 
 if (ini_get('session.use_cookies')) {
@@ -18,6 +20,7 @@ if (ini_get('session.use_cookies')) {
     );
 }
 
+// Oturumu tamamen sonlandır (Oturum kapatma işlemi)
 session_destroy();
 
 header('Location: login.php');

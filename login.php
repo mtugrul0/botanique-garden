@@ -1,4 +1,5 @@
 <?php
+// Oturum açma işlemleri için session başlatılıyor
 session_start();
 ob_start();
 
@@ -14,6 +15,7 @@ if (isset($_SESSION['register_success'])) {
 
 $form_username = '';
 
+// Form gönderildiğinde çalışacak oturum açma (Login) kontrolleri
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $username = trim($_POST['username'] ?? '');
@@ -33,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db = Database::getInstance();
 
+        // Veritabanından kullanıcı bilgilerini çekme (Read işlemi)
         $user = $db->fetchOne(
             'SELECT id, username, password FROM users WHERE username = ?',
             [$username]
@@ -40,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($user && password_verify($password, $user['password'])) {
 
+            // Oturum açma başarılı, kullanıcı bilgilerini session'a kaydet
             $_SESSION['user_id']  = $user['id'];
             $_SESSION['username'] = $user['username'];
 

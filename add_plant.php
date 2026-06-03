@@ -1,4 +1,5 @@
 <?php
+// Kullanıcı tarafından bilgi girişi (Create) işlemleri için session başlatılıyor
 session_start();
 ob_start();
 
@@ -21,6 +22,7 @@ $form_data = [
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    // Kullanıcı tarafından bilgi girişi (Create) form verileri alınıyor
     $name            = trim($_POST['name'] ?? '');
     $species         = trim($_POST['species'] ?? '');
     $location        = trim($_POST['location'] ?? '');
@@ -64,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db = Database::getInstance();
 
+        // Veritabanına yeni bitki verilerini ekleme sorgusu (Create)
         $db->execute(
             'INSERT INTO plants (name, species, location, water_frequency, last_watered, added_by, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())',
             [$name, $species, $location, intval($water_frequency), $last_watered, $_SESSION['user_id']]

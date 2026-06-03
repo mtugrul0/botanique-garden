@@ -1,4 +1,5 @@
 <?php
+// Bilgi silme (Delete) işlemleri için session başlatılıyor
 session_start();
 ob_start();
 
@@ -18,6 +19,7 @@ if ($plant_id <= 0) {
 
 $db = Database::getInstance();
 
+// Silinecek bitkinin varlığını ve sahipliğini veritabanından kontrol et (Read)
 $plant = $db->fetchOne(
     'SELECT id, added_by FROM plants WHERE id = ?',
     [$plant_id]
@@ -34,6 +36,7 @@ if ($plant['added_by'] != $_SESSION['user_id']) {
     exit;
 }
 
+// Veritabanından bitki kaydını sil (Bilgi silme - Delete işlemi)
 $db->execute(
     'DELETE FROM plants WHERE id = ? AND added_by = ?',
     [$plant_id, $_SESSION['user_id']]

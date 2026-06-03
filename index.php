@@ -1,4 +1,5 @@
 <?php
+// Oturum açma/kapama kontrolleri için session başlatılıyor
 session_start();
 ob_start();
 
@@ -11,6 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $db = Database::getInstance();
 
+// Girilen bilgilerin listelenmesi (Read) - Sadece giriş yapan kullanıcının bitkileri çekiliyor
 $plants = $db->fetchAll(
     'SELECT * FROM plants WHERE added_by = ? ORDER BY created_at DESC',
     [$_SESSION['user_id']]
@@ -64,6 +66,7 @@ require_once __DIR__ . '/includes/header.php';
 
     <div class="row g-4" id="plants-grid">
 
+        <!-- Girilen bilgilerin listelenmesi (Read) için döngü başlatılıyor -->
         <?php foreach ($plants as $plant): ?>
             <div class="col-12 col-md-6 col-lg-4">
 
@@ -137,6 +140,7 @@ require_once __DIR__ . '/includes/header.php';
                                     data-bs-toggle="modal"
                                     data-bs-target="#deleteModal-<?php echo $plant['id']; ?>"
                                     style="transition: all 0.3s ease;">
+                                <!-- Bilgi silme (Delete) işlemini tetikleyecek buton -->
                                 <i class="bi bi-trash3 me-1"></i>Sil
                             </button>
                         </div>

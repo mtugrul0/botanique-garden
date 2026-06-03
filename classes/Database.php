@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/db.php';
 
+// Veritabanı bağlantısı ve CRUD (Create, Read, Update, Delete) işlemleri için Singleton sınıfı
 class Database
 {
     private static ?Database $instance = null;
@@ -56,18 +57,21 @@ class Database
         }
     }
 
+    // Veritabanından birden fazla satır okuma (Read) işlemi yapar
     public function fetchAll(string $sql, array $params = []): array
     {
         $stmt = $this->query($sql, $params);
         return $stmt->fetchAll();
     }
 
+    // Veritabanından tek bir satır okuma (Read) işlemi yapar
     public function fetchOne(string $sql, array $params = []): array|false
     {
         $stmt = $this->query($sql, $params);
         return $stmt->fetch();
     }
 
+    // Veritabanına veri ekleme (Create), güncelleme (Update) veya silme (Delete) işlemi yapar
     public function execute(string $sql, array $params = []): int
     {
         $stmt = $this->query($sql, $params);

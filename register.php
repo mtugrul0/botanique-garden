@@ -1,4 +1,5 @@
 <?php
+// Kullanıcı kaydı işlemleri için session başlatılıyor
 session_start();
 ob_start();
 
@@ -14,6 +15,7 @@ $form_data = [
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    // Kullanıcı kaydı formu verilerini alma
     $username         = trim($_POST['username'] ?? '');
     $email            = trim($_POST['email'] ?? '');
     $password         = $_POST['password'] ?? '';
@@ -54,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db = Database::getInstance();
 
+        // Kullanıcı adı daha önce alınmış mı kontrolü (Read)
         $existing_user = $db->fetchOne(
             'SELECT id FROM users WHERE username = ?',
             [$username]
@@ -75,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+        // Veritabanına yeni kullanıcı ekleme işlemi (Kullanıcı kaydı - Create)
         $db->execute(
             'INSERT INTO users (username, email, password, created_at) VALUES (?, ?, ?, NOW())',
             [$username, $email, $hashed_password]
