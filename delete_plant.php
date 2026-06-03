@@ -5,7 +5,9 @@ ob_start();
 
 require_once __DIR__ . '/classes/Database.php';
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
+    session_unset();
+    session_destroy();
     header('Location: login.php');
     exit;
 }
