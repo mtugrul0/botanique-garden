@@ -2,6 +2,8 @@
 
 Botanique Garden, bitkilerinizi kolayca yönetebileceğiniz, takip edebileceğiniz ve yeni bitkiler ekleyebileceğiniz bir Botanik Bahçesi Yönetim Sistemidir. Bu proje, kullanıcı doğrulama ve tam kapsamlı CRUD (Create, Read, Update, Delete) operasyonlarını içerir.
 
+**🌍 Canlı Demo:** [http://95.130.171.20/~st23360859010/](http://95.130.171.20/~st23360859010/)
+
 ## 🚀 Özellikler
 
 Proje aşağıdaki temel gereksinimleri tam olarak karşılamaktadır:
