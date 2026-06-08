@@ -8,7 +8,7 @@
     <div class="container">
         <p class="mb-0" style="font-family: var(--font-body); font-size: 0.9rem;">
             <span style="margin-right: 0.25rem;">🌿</span>
-            &copy; 2025 <strong>Botanique Garden</strong> — Botanik Bahçesi Yönetim Sistemi
+            &copy; <?php echo date('Y'); ?> <strong>Botanique Garden</strong> — Botanik Bahçesi Yönetim Sistemi
         </p>
     </div>
 </footer>
