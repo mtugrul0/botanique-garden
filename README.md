@@ -38,9 +38,9 @@ Proje aşağıdaki temel gereksinimleri tam olarak karşılamaktadır:
 
 Projenin tüm fonksiyonlarını ve kullanımını anlatan tanıtım videosunu aşağıdan izleyebilirsiniz:
 
-[👉 Tanıtım Videosunu İzlemek İçin Tıklayın](BURAYA_LINK_GELECEK)
+[👉 Tanıtım Videosunu İzlemek İçin Tıklayın](https://youtu.be/ym-6_sebYcM?si=zhYPOH-Nh7AAqxLA)
 
-## ⚙️ Kurulum ve Çalıştırma (Lokal Ortam)
+## ⚙️ Kurulum ve Çalıştırma 
 
 Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
@@ -50,7 +50,7 @@ Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları t
 4. `config/db.example.php` dosyasını referans alarak `config/db.php` dosyasını oluşturun ve kendi veritabanı bilgilerinizi (kullanıcı adı, şifre) girin.
 5. Tarayıcınızda `http://localhost/botanique-garden/` adresine giderek uygulamayı başlatın.
 
-## 🌐 Canlıya Alma (Hosting)
+## 🌐 Canlıya Alma
 
 Projeyi bir web sunucusuna yüklediğinizde, `config/db.php` dosyası içerisindeki veritabanı adını, kullanıcı adını ve şifresini hosting sağlayıcınızın size verdiği uzak veritabanı (MySQL) bilgileriyle değiştirmeyi unutmayın.
 
